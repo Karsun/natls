@@ -103,6 +103,11 @@ class FieldParser
 			ddmLength = ddmLength.replace(",", ".");
 		}
 
+		if (ddmLength.isBlank())
+		{
+			return 0.0;
+		}
+
 		try
 		{
 			return Double.parseDouble(ddmLength);
