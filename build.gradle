@@ -11,6 +11,7 @@ plugins {
 ext {
 	JAVA_VERSION = 25
 	SLF4J_VERSION = '2.0.17'
+	JACKSON_CORE_VERSION = '2.22.1'
     SONAR_VERSION = '9.9.1.69595'
     SONAR_API_VERSION = '10.1.0.809'
 	libraries = [
@@ -71,6 +72,12 @@ allprojects {
 
 	repositories {
 		mavenCentral()
+	}
+
+	configurations.configureEach {
+		resolutionStrategy.force(
+			"com.fasterxml.jackson.core:jackson-core:${JACKSON_CORE_VERSION}"
+		)
 	}
 
 	javadoc.options.addStringOption('Xdoclint:none', '-quiet')
